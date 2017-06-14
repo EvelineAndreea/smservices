@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<result algorithm="Gale Shapley for one-to-many instance" description="Matching result for the instance proposed">
+    <match>
+        <element set="students">31090104SL151002</element>
+        <element set="courses">PF</element>
+    </match>
+    <unmatched number="5">
+        <element>31090104SL151001</element>
+        <element>31090104SL140253</element>
+    </unmatched>
+</result>
