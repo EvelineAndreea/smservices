@@ -7,14 +7,15 @@ import org.springframework.web.bind.annotation.*;
 import rest.model.ResponseXml;
 import rest.model.SolvedXml;
 import sm.SMService;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @RestController
 @RequestMapping("/sm")
+@EnableSwagger2
 public class SmrestservicesApplication {
-    private SMService service;
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 		SpringApplication.run(SmrestservicesApplication.class, args);
 	}
 
@@ -25,7 +26,7 @@ public class SmrestservicesApplication {
 
     @RequestMapping(value = "/algorithm/{param}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE, headers = "Accept=application/xml")
     public ResponseXml getMatching(@PathVariable("param") String param, @RequestBody String document){
-        service = new SMService();
+        SMService service = new SMService();
         return service.manage(param, document);
     }
 }
