@@ -11,7 +11,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @RestController
-@RequestMapping("/sm")
 @EnableSwagger2
 public class SmrestservicesApplication {
 
@@ -19,14 +18,4 @@ public class SmrestservicesApplication {
 		SpringApplication.run(SmrestservicesApplication.class, args);
 	}
 
-	@RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<?> sayHello(){
-	    return new ResponseEntity<>("POST an XML file for solving a specific type of stable matching problem.", HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/algorithm/{param}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE, headers = "Accept=application/xml")
-    public ResponseXml getMatching(@PathVariable("param") String param, @RequestBody String document){
-        SMService service = new SMService();
-        return service.manage(param, document);
-    }
 }
