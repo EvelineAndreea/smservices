@@ -16,6 +16,10 @@ public class Matching {
     protected int unmatchedNumberOfElements = 0;
     protected List<String> setNames;
 
+    public Matching() {
+
+    }
+
     public int getUnmatchedNumberOfElements() {
         return unmatchedNumberOfElements;
     }

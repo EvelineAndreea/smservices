@@ -2,6 +2,7 @@ package sm.utils;
 
 public final class Constants {
     public static final String XML_ERROR_PREFIX = "[XML][ERROR] ";
+    public static final String XML_DESCRIPTION = "Matching result for the instance proposed";
 
     public static final String GS_ALGORITHM_NAME = "Gale Shapley for one-to-one instance";
     public static final String HR_ALGORITHM_NAME = "Gale Shapley for one-to-many instance";

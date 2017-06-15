@@ -3,10 +3,7 @@ package sm;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
-import rest.model.ElementXml;
-import rest.model.MatchXml;
-import rest.model.ResponseXml;
-import rest.model.UnmatchedXml;
+import rest.model.*;
 import sm.exceptions.ValidationException;
 import sm.solvers.AbstractSolver;
 import sm.solvers.SolverFactory;
@@ -24,21 +21,35 @@ import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SMService {
-    private String type;
-    private int code;
+import static sm.utils.Constants.XML_DESCRIPTION;
 
-    public SMService(String type){
-        this.type = type;
-    }
+public class SMService {
+    private String algorithmName;
 
     public ResponseXml manage(String problemType, String documentContent){
+        SolvedXml xmlOk = null;
+        ErrorXml xmlError = null;
+        try {
+            Matching matching = interpretInstance(problemType, documentContent);
+            xmlOk = map(matching, algorithmName, XML_DESCRIPTION ,matching.getSetNames().get(0), matching.getSetNames().get(1));
+        } catch (ValidationException e) {
+            xmlError = new ErrorXml();
+            xmlError.setDescription(XML_DESCRIPTION);
+            xmlError.setAlgorithm(algorithmName);
+            xmlError.setMessage(e.getMessage());
+        }
+
+        return xmlError == null ? xmlOk :xmlError;
+    }
+
+    private Matching interpretInstance(String problemType, String documentContent){
+        Matching matching = new Matching();
         InputSource is = new InputSource();
         is.setCharacterStream(new StringReader(documentContent));
 
-        ResponseXml xml;
+        DocumentBuilder db;
         try {
-            DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+            db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             Document document = db.parse(is);
 
             SMParser parser = new SMParser(document);
@@ -46,25 +57,17 @@ public class SMService {
 
             Problem problem = parser.getProblem();
             AbstractSolver solver = SolverFactory.getSolver(problemType, 1, problem);
-            Matching matching = solver.solve();
+            matching = solver.solve();
 
-            xml = map(matching, solver.getAlgorithmName(),"Matching result for the instance proposed" ,matching.getSetNames().get(0), matching.getSetNames().get(1));
-            code = 200;
-
-        } catch (IOException | ParserConfigurationException | SAXException | ValidationException e) {
-            xml = new ResponseXml();
+            this.algorithmName = solver.getAlgorithmName();
+        } catch (ParserConfigurationException | SAXException | IOException e) {
+            e.printStackTrace();
         }
-
-        return xml;
+        return matching;
     }
 
-    public int getCode() {
-        return code;
-    }
-
-
-    public ResponseXml map(Matching matching, String algorithm, String description, String firstSet, String secondSet){
-        ResponseXml response = new ResponseXml();
+    public SolvedXml map(Matching matching, String algorithm, String description, String firstSet, String secondSet){
+        SolvedXml response = new SolvedXml();
         response.setAlgorithm(algorithm);
         response.setDescription(description);
 
