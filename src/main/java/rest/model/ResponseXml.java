@@ -5,8 +5,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "result")
 public class ResponseXml {
-    private String algorithm;
-    private String description;
+    protected String algorithm;
 
     @XmlAttribute(name = "algorithm")
     public String getAlgorithm() {
@@ -15,15 +14,6 @@ public class ResponseXml {
 
     public void setAlgorithm(String algorithm) {
         this.algorithm = algorithm;
-    }
-
-    @XmlAttribute(name = "description")
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
 }

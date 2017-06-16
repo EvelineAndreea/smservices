@@ -8,10 +8,20 @@ import java.util.List;
 
 @XmlRootElement(name = "result")
 public class SolvedXml extends ResponseXml{
+    protected String description;
 
     private List<MatchXml> matches;
     private UnmatchedXml unmatched;
 
+
+    @XmlAttribute(name = "description")
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     @XmlElement(name = "unmatched")
     public UnmatchedXml getUnmatched() {

@@ -1,4 +1,4 @@
-package sm;
+package rest;
 
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
@@ -34,12 +34,11 @@ public class SMService {
             xmlOk = map(matching, algorithmName, XML_DESCRIPTION ,matching.getSetNames().get(0), matching.getSetNames().get(1));
         } catch (ValidationException e) {
             xmlError = new ErrorXml();
-            xmlError.setDescription(XML_DESCRIPTION);
             xmlError.setAlgorithm(algorithmName);
             xmlError.setMessage(e.getMessage());
         }
 
-        return xmlError == null ? xmlOk :xmlError;
+        return xmlError == null ? xmlOk : xmlError;
     }
 
     private Matching interpretInstance(String problemType, String documentContent){

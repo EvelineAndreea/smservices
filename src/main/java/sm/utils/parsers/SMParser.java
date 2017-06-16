@@ -291,7 +291,10 @@ public class SMParser {
     }
 
     private Float verifyNumberValue(String attributeValue, String errorMessage, String parameterName){
-        String error = errorMessage + " " + parameterName + ".";
+        String error = errorMessage;
+        if (parameterName != null)
+            error += " " + parameterName + ".";
+
         if (attributeValue == null)
             throw new ValidationException(error);
 

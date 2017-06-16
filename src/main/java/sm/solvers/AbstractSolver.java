@@ -1,5 +1,7 @@
 package sm.solvers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import sm.utils.model.Problem;
 import sm.utils.model.matchings.Matching;
 
@@ -11,6 +13,7 @@ public abstract class AbstractSolver implements Solver {
     Matching matching;
     String algorithmName;
     String solverName;
+    Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public abstract Matching solve();
     public Matching getMatching() {
@@ -19,12 +22,11 @@ public abstract class AbstractSolver implements Solver {
     public String getAlgorithmName() {
         return algorithmName;
     }
+
     public void setNames(){
         List<String> setNames = new ArrayList<>();
-        for (int i = 0; i < problem.getSets().size(); i++) {
+        for (int i = 0; i < problem.getSets().size(); i++)
             setNames.add(problem.getSets().get(i).getSetName());
-            System.out.println(problem.getSets().get(i).getSetName());
-        }
 
         this.matching.setSetNames(setNames);
     }

@@ -1,6 +1,5 @@
 package sm.solvers;
 
-import sm.utils.logging.SmLogger;
 import sm.utils.model.Element;
 import sm.utils.model.Pair;
 import sm.utils.model.Problem;
@@ -21,7 +20,6 @@ public class GaleShapleySolver extends AbstractSolver {
     @Override
     public Matching solve() {
 
-        SmLogger.start(true, algorithmName, solverName);
         /* while there are elements that aren't matched yet */
         while (!matching.freeElements().isEmpty()) {
             /* get first element from the queue */
@@ -30,11 +28,9 @@ public class GaleShapleySolver extends AbstractSolver {
             /* get its preference element: looping through its list => by the level value */
             while (!element.preferences().isEmpty()) {
                 Element pref = problem.element(element.preferences().poll().elemId());
-                SmLogger.logAction("proposal", element.elemId(), pref.elemId());
 
                 /* check if is an acceptable partner for current preference */
                 if (!pref.accepts(element)) {
-                    SmLogger.logAction("rejection", element.elemId(), pref.elemId());
                     continue;
                 }
 
@@ -43,7 +39,6 @@ public class GaleShapleySolver extends AbstractSolver {
                     problem.element(pref.elemId()).setAvailability(false);
                     problem.element(element.elemId()).setAvailability(false);
                     matching.addPair(new Pair(element, pref));
-                    SmLogger.logAction("paired", element.elemId(), pref.elemId());
                     break;
                 }
                 else {
@@ -62,16 +57,13 @@ public class GaleShapleySolver extends AbstractSolver {
                         problem.element(currentMatch.elemId()).setAvailability(true);
 
                         /* add the current pair to the Matching and the old match for the woman to the free list */
-                        SmLogger.logAction("paired", element.elemId(), pref.elemId());
                         matching.addPair(new Pair(problem.element(element.elemId()), problem.element(pref.elemId())));
 
                         matching.addFreeElement(problem.element(currMatchName));
-                        SmLogger.logAction("unmatched", currMatchName, pref.elemId());
                         break;
                     }
                     else {
                         matching.addPair(new Pair(currentMatch, pref));
-                        SmLogger.logAction("paired", currentMatch.elemId(), pref.elemId());
                     }
                 }
             }
@@ -82,7 +74,6 @@ public class GaleShapleySolver extends AbstractSolver {
         problem.getSets().get(0).getElements().stream().filter(Element::isAvailable).forEach(Element::remakeList);
         problem.getSets().get(0).getElements().stream().filter(Element::isAvailable).forEach(element -> matching.addFreeElement(problem.element(element.elemId())));
 
-        SmLogger.start(false, algorithmName, solverName);
         return matching;
     }
 }

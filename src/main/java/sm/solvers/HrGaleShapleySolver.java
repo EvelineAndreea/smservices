@@ -1,12 +1,13 @@
 package sm.solvers;
 
-import sm.utils.logging.SmLogger;
 import sm.utils.model.Element;
 import sm.utils.model.Pair;
 import sm.utils.model.Problem;
 import sm.utils.model.matchings.Matching;
 
 import static sm.utils.Constants.HR_ALGORITHM_NAME;
+import static sm.utils.logging.SmLogger.logAction;
+import static sm.utils.logging.SmLogger.start;
 
 /**
  * Class that solves HR (ont-to-many) instances
@@ -20,22 +21,22 @@ public class HrGaleShapleySolver extends AbstractSolver {
         this.algorithmName = HR_ALGORITHM_NAME;
         this.solverName = "[HR_SOLVER] ";
         setNames();
+        System.setProperty("log.name", algorithmName + "- log");
     }
 
     @Override
     public Matching solve() {
 
-        SmLogger.start(true, algorithmName, solverName);
+        logger.info(start(true, algorithmName, solverName));
         while (!matching.freeElements().isEmpty()) {
             Element resident = matching.freeElements().poll();
 
             while (!resident.preferences().isEmpty()) {
                 Element hospital = problem.element(resident.preferences().poll().elemId());
-                SmLogger.logAction("proposal", resident.elemId(), hospital.elemId());
-//                System.out.println("[HR-SOLVER] " + resident.elemId() + " " + hospital.elemId());
+                logger.info(logAction("proposal", resident.elemId(), hospital.elemId()));
 
                 if (!hospital.accepts(resident)) {
-                    SmLogger.logAction("rejection", resident.elemId(), hospital.elemId());
+                    logger.info(logAction("rejection", resident.elemId(), hospital.elemId()));
                     continue;
                 }
 
@@ -50,8 +51,8 @@ public class HrGaleShapleySolver extends AbstractSolver {
                         matching.addPair(new Pair(resident, hospital));
                         matching.addPair(new Pair(partner, hospital));
 
-                        SmLogger.logAction("paired", resident.elemId(), hospital.elemId());
-                        SmLogger.logAction("paired", partner.elemId(), hospital.elemId());
+                        logger.info(logAction("paired", resident.elemId(), hospital.elemId()));
+                        logger.info(logAction("paired", partner.elemId(), hospital.elemId()));
 
                         resident.setAvailability(false);
                         partner.setAvailability(false);
@@ -78,16 +79,16 @@ public class HrGaleShapleySolver extends AbstractSolver {
                         matching.addPair(new Pair(partner, hospital));
                         matching.removeFreeElement(partner);
 
-                        SmLogger.logAction("paired", resident.elemId(), hospital.elemId());
-                        SmLogger.logAction("paired", partner.elemId(), hospital.elemId());
+                        logger.info(logAction("paired", resident.elemId(), hospital.elemId()));
+                        logger.info(logAction("paired", partner.elemId(), hospital.elemId()));
 
                         problem.element(lowestMatch1.elemId()).setAvailability(true);
                         matching.addFreeElement(lowestMatch1);
                         matching.removePairFor(lowestMatch1);
-                        SmLogger.logAction("rejection", lowestMatch1.elemId(), hospital.elemId());
+                        logger.info(logAction("rejection", lowestMatch1.elemId(), hospital.elemId()));
 
                         if (lowestMatch2 != null) {
-                            SmLogger.logAction("rejection", lowestMatch2.elemId(), hospital.elemId());
+                            logger.info(logAction("rejection", lowestMatch2.elemId(), hospital.elemId()));
                             problem.element(lowestMatch2.elemId()).setAvailability(true);
                             matching.addFreeElement(lowestMatch2);
                             matching.removePairFor(lowestMatch2);
@@ -121,7 +122,7 @@ public class HrGaleShapleySolver extends AbstractSolver {
         }
 
         problem.getSets().get(0).getElements().stream().filter(Element::isAvailable).forEach(elem -> matching.addFreeElement(problem.element(elem.elemId())));
-        SmLogger.start(false, algorithmName, solverName);
+        logger.info(start(false, algorithmName, solverName));
         return matching;
     }
 }
