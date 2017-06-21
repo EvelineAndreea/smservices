@@ -19,7 +19,6 @@ public class KiralySolver extends AbstractSolver {
         this.problem = problem;
         this.algorithmName = K_ALGORITHM_NAME;
         this.solverName = "[KIRALY_SOLVER] ";
-        setNames();
     }
 
     @Override
@@ -27,6 +26,8 @@ public class KiralySolver extends AbstractSolver {
         SmLogger.start(true, algorithmName, solverName);
 
         matching = new Matching(problem.getSets().get(0).getElements());
+        setNames();
+
         Set men = problem.getSets().get(0);
 
         /* array which holds a boolean that specifies if a man was already re-promoted */

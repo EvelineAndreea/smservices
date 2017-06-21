@@ -21,22 +21,24 @@ public class HrGaleShapleySolver extends AbstractSolver {
         this.algorithmName = HR_ALGORITHM_NAME;
         this.solverName = "[HR_SOLVER] ";
         setNames();
-        System.setProperty("log.name", algorithmName + "- log");
     }
 
     @Override
     public Matching solve() {
 
         logger.info(start(true, algorithmName, solverName));
+        System.out.println(start(true, algorithmName, solverName));
+
         while (!matching.freeElements().isEmpty()) {
             Element resident = matching.freeElements().poll();
 
             while (!resident.preferences().isEmpty()) {
                 Element hospital = problem.element(resident.preferences().poll().elemId());
                 logger.info(logAction("proposal", resident.elemId(), hospital.elemId()));
-
+                System.out.println(logAction("proposal", resident.elemId(), hospital.elemId()));
                 if (!hospital.accepts(resident)) {
                     logger.info(logAction("rejection", resident.elemId(), hospital.elemId()));
+                    System.out.println(logAction("rejection", resident.elemId(), hospital.elemId()));
                     continue;
                 }
 
@@ -53,7 +55,8 @@ public class HrGaleShapleySolver extends AbstractSolver {
 
                         logger.info(logAction("paired", resident.elemId(), hospital.elemId()));
                         logger.info(logAction("paired", partner.elemId(), hospital.elemId()));
-
+                        System.out.println(logAction("paired", partner.elemId(), hospital.elemId()));
+                        System.out.println(logAction("paired", resident.elemId(), hospital.elemId()));
                         resident.setAvailability(false);
                         partner.setAvailability(false);
                         hospital.decCapacity(2);

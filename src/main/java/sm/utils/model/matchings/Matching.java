@@ -151,8 +151,11 @@ public class Matching {
             string.append(pair.getFirst().elemId()).append(" + ").append(pair.getSecond().elemId()).append("\n");
 
         string.append("Free elements: ");
-        for (Element element : freeElements)
-            string.append(element.elemId()).append(" ");
+        if (freeElements.size() == 0)
+            string.append("none.");
+        else
+            for (Element element : freeElements)
+                string.append(element.elemId()).append(" ");
         string.append("\n");
 
         return string.toString();

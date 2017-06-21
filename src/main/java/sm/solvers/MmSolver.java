@@ -20,15 +20,15 @@ public class MmSolver extends AbstractSolver {
     public MmSolver(Problem problem) {
         this.problem = problem;
         this.algorithmName = MM_ALGORITHM_NAME;
-        setNames();
     }
 
     @Override
     public Matching solve() {
         matching = new MmMatching(problem.getSets().get(0).getElements());
+        setNames();
         int l = 0;
         do {
-            System.out.println("Phase " + l);
+//            System.out.println("Phase " + l);
 
             while (!matching.freeElements().isEmpty()) {
                 Element firm = matching.freeElements().poll();
@@ -36,7 +36,7 @@ public class MmSolver extends AbstractSolver {
                 /* while the firm still has preferences in its list or has some more available places */
                 while (!firm.preferences().isEmpty() && firm.isAvailable()) {
                     Element worker = firm.preferences().poll();
-                    System.out.println("[MM-SOLVER] " + firm.elemId() + " " + worker.elemId());
+//                    System.out.println("[MM-SOLVER] " + firm.elemId() + " " + worker.elemId());
 
                     if (worker instanceof GroupElement) {
                         GroupElement gworker = (GroupElement) worker;
@@ -83,7 +83,7 @@ public class MmSolver extends AbstractSolver {
 
             for (Element worker : ((MmMatching) matching).getMatchedWorkers()) {
                 Element wElement = problem.element(worker.elemId());
-                System.out.println(worker.elemId() + " has the capacity " + ((MmMatching) matching).noOfCurrentMatches(worker));
+//                System.out.println(worker.elemId() + " has the capacity " + ((MmMatching) matching).noOfCurrentMatches(worker));
 
                 if (((MmMatching) matching).noOfCurrentMatches(worker) > wElement.capacity())
                     ((MmMatching) matching).removeLeastPreferred(worker);
@@ -94,7 +94,7 @@ public class MmSolver extends AbstractSolver {
                     continue;
 
                 for (String workerId : workerIds) {
-                    System.out.println(firm.elemId() + " has been rejected by " + workerId);
+//                    System.out.println(firm.elemId() + " has been rejected by " + workerId);
                     firm.rejectedBy(workerId);
                 }
                 if (!firm.preferences().isEmpty())

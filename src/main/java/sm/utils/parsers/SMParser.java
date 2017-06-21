@@ -295,7 +295,7 @@ public class SMParser {
         if (parameterName != null)
             error += " " + parameterName + ".";
 
-        if (attributeValue == null)
+        if (attributeValue.isEmpty())
             throw new ValidationException(error);
 
         Float value = Float.parseFloat(attributeValue);

@@ -15,12 +15,12 @@ public class SaSolver extends AbstractSolver {
     public SaSolver(Problem problem) {
         this.problem = problem;
         this.algorithmName = SA_ALGORITHM_NAME;
-        setNames();
     }
 
     @Override
     public Matching solve() {
         matching = new SaMatching(problem.getSets().get(0).getElements());
+        setNames();
 
         /* while there are unmatched workers */
         while (!matching.freeElements().isEmpty()) {
