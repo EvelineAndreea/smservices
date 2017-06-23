@@ -70,12 +70,13 @@ public class SMService {
         response.setAlgorithm(algorithm);
         response.setDescription(description);
 
-        MatchXml match = new MatchXml();
         List<MatchXml> matches = new ArrayList<>();
         UnmatchedXml unmatched = new UnmatchedXml();
         List<ElementXml> unmatchedElements = new ArrayList<>();
 
         for(Pair pair: matching.getPairs()){
+            MatchXml match = new MatchXml();
+
             ElementXml elem0 = new ElementXml();
             elem0.setName(pair.getFirst().elemId());
             elem0.setSet(firstSet);
@@ -92,6 +93,7 @@ public class SMService {
             matches.add(match);
         }
 
+        System.out.println(matches.get(0) .getElements().get(0) + "    -------     " + matches.get(1).getElements().get(0));
         response.setMatches(matches);
 
         for (Element element: matching.getFreeElements()){

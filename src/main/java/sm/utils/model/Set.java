@@ -24,7 +24,6 @@ public class Set {
         setSize++;
     }
 
-
     public boolean contains(String elementName) {
         return elements.contains(new Element(elementName));
     }

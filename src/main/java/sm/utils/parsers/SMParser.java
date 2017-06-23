@@ -240,6 +240,7 @@ public class SMParser {
                     capacity = verifyNumberValue(element.getAttribute("capacity"), ERROR_INVALID_CAPACITY, name);
                     verifyIfElementAlreadyExists(name, set);
                     set.insertElement(new sm.utils.model.Element(name, capacity));
+                    System.out.println("HERE added" + name);
                 }
 
                 if (problem.needsUnitsSpecified()) {
@@ -249,7 +250,7 @@ public class SMParser {
                 }
             }
         }
-
+        System.out.println("setSz = " + set.getSize() + " setName = " + set.getSetName());
         if (size != set.getSize())
             throw new ValidationException("Invalid size for " + setName + ".");
         problem.insertSet(set);

@@ -41,3 +41,5 @@ public class SolvedXml extends ResponseXml{
         this.matches = matches;
     }
 }
+
+

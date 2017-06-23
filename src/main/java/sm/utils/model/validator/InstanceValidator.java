@@ -5,7 +5,7 @@ import sm.utils.model.StableMatchingType;
 public class InstanceValidator {
     public static boolean isAValidProblemType(String type){
         for (StableMatchingType smType: StableMatchingType.values())
-            if (type.equals(smType.toString()))
+            if (type.equalsIgnoreCase(smType.toString()))
                 return true;
         return false;
     }

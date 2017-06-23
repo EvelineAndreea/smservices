@@ -15,6 +15,5 @@ public class ResponseXml {
     public void setAlgorithm(String algorithm) {
         this.algorithm = algorithm;
     }
-
 }
 
