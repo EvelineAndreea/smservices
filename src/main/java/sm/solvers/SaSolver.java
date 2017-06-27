@@ -44,14 +44,14 @@ public class SaSolver extends AbstractSolver {
                     if(least.level() > worker.level())
                         continue;
 
-                    least = problem.saElement(least.elemId());
+                    least = (SaElement) problem.element(least.elemId());
                     int unitsToRelocate = ((SaMatching)matching).getUnitsForPair(least, firm);
                     System.out.println("units to relocate = " +unitsToRelocate);
                     firm.relocateUnits(unitsToRelocate);
                     least.relocateUnits(unitsToRelocate);
 
                     matching.removeSpecificPair(least, firm);
-                    matching.addFreeElement(problem.saElement(least.elemId()));
+                    matching.addFreeElement(problem.element(least.elemId()));
                     System.out.println(firm.elemId() + " rejected " + least.elemId() + " in favour of " + worker.elemId());
                 }
 

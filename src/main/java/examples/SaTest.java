@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class SaTest {
     public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
-        SMParser parser = new SMParser("D:\\Facultate\\Sem 5\\LICENTA\\Architecture Planning\\saSample.xml");
+        SMParser parser = new SMParser("D:\\Facultate\\Sem 5\\LICENTA\\Architecture Planning\\saSample2.xml");
         parser.read();
 
         Problem problem = parser.getProblem();

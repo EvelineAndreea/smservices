@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<problem description="" name="HR">
+    <set name="second-set" size="10">m0,m1,m2,m3,m4,m5,m6,m7,m8,m9</set>
+    <set name="first-set" size="4">
+        <element capacity="2" name="w0"/>
+        <element capacity="6" name="w1"/>
+        <element capacity="7" name="w2"/>
+        <element capacity="1" name="w3"/>
+    </set>
+    <preferences name="m0">
+        <element level="1.0" name="w2"/>
+        <element level="2.0" name="w1"/>
+    </preferences>
+    <preferences name="m1">
+        <element level="1.0" name="w3"/>
+        <element level="2.0" name="w1"/>
+        <element level="3.0" name="w2"/>
+    </preferences>
+    <preferences name="m2">
+        <element level="1.0" name="w1"/>
+        <element level="2.0" name="w3"/>
+    </preferences>
+    <preferences name="m3">
+        <element level="1.0" name="w1"/>
+        <element level="2.0" name="w2"/>
+        <element level="3.0" name="w0"/>
+    </preferences>
+    <preferences name="m4">
+        <element level="1.0" name="w0"/>
+    </preferences>
+    <preferences name="m5">
+        <element level="1.0" name="w2"/>
+        <element level="2.0" name="w3"/>
+        <element level="3.0" name="w1"/>
+        <element level="4.0" name="w0"/>
+    </preferences>
+    <preferences name="m6">
+        <element level="1.0" name="w0" />
+        <element level="2.0" name="w3" />
+        <element level="3.0" name="w2" />
+    </preferences>
+    <preferences name="m7">
+        <element level="1.0" name="w2" />
+        <element level="2.0" name="w3" />
+    </preferences>
+    <preferences name="m8">
+        <element level="1.0" name="w2" />
+        <element level="2.0" name="w1" />
+        <element level="3.0" name="w0" />
+    </preferences>
+    <preferences name="m9">
+        <element level="1.0" name="w2" />
+        <element level="2.0" name="w0" />
+        <element level="3.0" name="w1" />
+    </preferences>
+    <preferences name="w0">
+        <element level="1.0" name="m7" />
+        <element level="2.0" name="m4" />
+        <element level="3.0" name="m0" />
+    </preferences>
+    <preferences name="w1">
+        <element level="1.0" name="m8" />
+        <element level="2.0" name="m2" />
+        <element level="3.0" name="m9" />
+        <element level="3.0" name="m5" />
+        <element level="3.0" name="m3" />
+        <element level="4.0" name="m6" />
+        <element level="5.0" name="m4" />
+        <element level="6.0" name="m1" />
+        <element level="7.0" name="m0" />
+    </preferences>
+    <preferences name="w2">
+        <element level="1.0" name="m5" />
+    </preferences>
+    <preferences name="w3">
+        <element level="1.0" name="m8" />
+        <element level="2.0" name="m2" />
+        <element level="2.0" name="m5" />
+        <element level="3.0" name="m0" />
+        <element level="4.0" name="m4" />
+        <element level="5.0" name="m3" />
+        <element level="6.0" name="m9" />
+    </preferences>
+</problem>

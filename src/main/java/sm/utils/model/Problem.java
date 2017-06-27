@@ -30,11 +30,6 @@ public class Problem {
         return sets;
     }
 
-    public void setSets(Set ... sets) {
-        this.sets = new ArrayList<>();
-        Collections.addAll(this.sets, sets);
-    }
-
     public int getSetOfElement(String elementId){
         for (int i = 0; i < sets.size(); i++)
             if (sets.get(i).contains(elementId))
@@ -45,25 +40,32 @@ public class Problem {
     public Element element(String elementId) {
         return sets.get(getSetOfElement(elementId)).getElementByName(elementId);
     }
-
-    public SaElement saElement(String elementId) {
-        return (SaElement) sets.get(getSetOfElement(elementId)).getElementByName(elementId);
-    }
+//
+//    public SaElement saElement(String elementId) {
+//        return (SaElement) sets.get(getSetOfElement(elementId)).getElementByName(elementId);
+//    }
 
     public void updateElementPreferenceList(Element newElement){
-        element(newElement.elemId()).setPreferences(newElement.preferences());
+        if (newElement instanceof SaElement)
+            ((SaElement) element(newElement.elemId())).setSaPreferences(((SaElement) newElement).saPreferences());
+        else
+            element(newElement.elemId()).setPreferences(newElement.preferences());
     }
-
-    public void updateElementPreferenceList(SaElement newElement){
-        saElement(newElement.elemId()).setSaPreferences(newElement.saPreferences());
-    }
-
-    public int getSetSizeForElement(String elementId){
-        return sets.get(getSetOfElement(elementId)).getSize();
-    }
+//
+//    public void updateElementPreferenceList(SaElement newElement){
+//        ((SaElement)element(newElement.elemId())).setSaPreferences(newElement.saPreferences());
+//    }
 
     public boolean isAvailable(String elementId) {
         return element(elementId).isAvailable();
+    }
+
+    public boolean needsCapacitySpecified() {
+        return problemName.equalsIgnoreCase("HR") || problemName.equalsIgnoreCase("MM");
+    }
+
+    public boolean needsUnitsSpecified() {
+        return problemName.equalsIgnoreCase("SA");
     }
 
     public String getProblemName() {
@@ -82,12 +84,4 @@ public class Problem {
         return string.toString();
     }
 
-    public boolean needsCapacitySpecified() {
-        return problemName.equalsIgnoreCase("HR") || problemName.equalsIgnoreCase("MM");
-    }
-
-
-    public boolean needsUnitsSpecified() {
-        return problemName.equalsIgnoreCase("SA");
-    }
 }

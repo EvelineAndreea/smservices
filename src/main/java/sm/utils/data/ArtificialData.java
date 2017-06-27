@@ -24,8 +24,8 @@ public class ArtificialData {
     }
 
     public void generateSets() {
-        int setSize = rand.nextInt(10) + 8;
-        int secondSetSize = abs(setSize - rand.nextInt(10) - 1);
+        int setSize = rand.nextInt(25) + 8;
+        int secondSetSize = abs(setSize - rand.nextInt(17) - 1);
         if (setSize < secondSetSize)
         {
             int aux = setSize;

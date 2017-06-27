@@ -19,13 +19,13 @@ import static sm.utils.model.StableMatchingType.HR;
 public class RandTest {
 
     public static void main(String[] args) throws TransformerException, ParserConfigurationException, IOException, SAXException {
-        ArtificialData data = new ArtificialData(HR);
-        data.createInstance();
+//        ArtificialData data = new ArtificialData(HR);
+//        data.createInstance();
+//
+//        XMLCreator xml = new XMLCreator(16, data.getProblem());
+//        xml.createXmlInstance();
 
-        XMLCreator xml = new XMLCreator(14, data.getProblem());
-        xml.createXmlInstance();
-
-        SMParser parser = new SMParser("sample14.xml");
+        SMParser parser = new SMParser("sample16.xml");
         parser.read();
 
         Problem problem = parser.getProblem();

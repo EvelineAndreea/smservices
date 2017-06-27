@@ -41,12 +41,12 @@ public class SMParser {
         return problem;
     }
 
-    public void read() throws IOException, SAXException, ParserConfigurationException, ValidationException {
+    public void read()  {
         document.getDocumentElement().normalize();
         instantiateProblem();
     }
 
-    private void setProblemDetails(Element element) throws ValidationException {
+    private void setProblemDetails(Element element) {
         String problemName = element.getAttribute("name");
         if (!InstanceValidator.isAValidProblemType(problemName))
             throw new ValidationException();
@@ -240,7 +240,6 @@ public class SMParser {
                     capacity = verifyNumberValue(element.getAttribute("capacity"), ERROR_INVALID_CAPACITY, name);
                     verifyIfElementAlreadyExists(name, set);
                     set.insertElement(new sm.utils.model.Element(name, capacity));
-                    System.out.println("HERE added" + name);
                 }
 
                 if (problem.needsUnitsSpecified()) {
@@ -250,7 +249,6 @@ public class SMParser {
                 }
             }
         }
-        System.out.println("setSz = " + set.getSize() + " setName = " + set.getSetName());
         if (size != set.getSize())
             throw new ValidationException("Invalid size for " + setName + ".");
         problem.insertSet(set);

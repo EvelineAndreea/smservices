@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<problem description="" name="HR">
+	<set name="second-set" size="14">m0,m1,m2,m3,m4,m5,m6,m7,m8,m9,m11,m10,m13,m12</set>
+	<set name="first-set" size="4">
+      <element capacity="10" name="w0" />
+      <element capacity="4" name="w1" />
+      <element capacity="12" name="w2" />
+      <element capacity="6" name="w3" />
+   </set>
+   <preferences name="m0">
+      <element level="1.0" name="w0" tie="false" />
+   </preferences>
+   <preferences name="m1">
+      <element level="1.0" name="w0" tie="false" />
+   </preferences>
+   <preferences name="m2">
+      <element level="1.0" name="w2" tie="false" />
+      <element level="1.0" name="w0" tie="false" />
+      <element level="2.0" name="w1" tie="false" />
+      <element level="3.0" name="w3" tie="false" />
+   </preferences>
+   <preferences name="m3">
+      <element level="1.0" name="w2" tie="false" />
+   </preferences>
+   <preferences name="m4">
+      <element level="1.0" name="w1" tie="false" />
+   </preferences>
+   <preferences name="m5">
+      <element level="1.0" name="w0" tie="false" />
+      <element level="2.0" name="w3" tie="false" />
+      <element level="3.0" name="w1" tie="false" />
+      <element level="4.0" name="w2" tie="false" />
+   </preferences>
+   <preferences name="m6">
+      <element level="1.0" name="w1" tie="false" />
+      <element level="2.0" name="w2" tie="false" />
+      <element level="3.0" name="w0" tie="false" />
+      <element level="4.0" name="w3" tie="false" />
+   </preferences>
+   <preferences name="m7">
+      <element level="1.0" name="w2" tie="false" />
+      <element level="1.0" name="w3" tie="false" />
+      <element level="2.0" name="w0" tie="false" />
+      <element level="3.0" name="w1" tie="false" />
+   </preferences>
+   <preferences name="m8">
+      <element level="1.0" name="w2" tie="false" />
+      <element level="2.0" name="w0" tie="false" />
+   </preferences>
+   <preferences name="m9">
+      <element level="1.0" name="w0" tie="false" />
+      <element level="2.0" name="w2" tie="false" />
+      <element level="2.0" name="w3" tie="false" />
+      <element level="3.0" name="w1" tie="false" />
+   </preferences>
+   <preferences name="m11">
+      <element level="1.0" name="w0" tie="false" />
+   </preferences>
+   <preferences name="m10">
+      <element level="1.0" name="w2" tie="false" />
+   </preferences>
+   <preferences name="m13">
+      <element level="1.0" name="w0" tie="false" />
+      <element level="2.0" name="w1" tie="false" />
+   </preferences>
+   <preferences name="m12">
+      <element level="1.0" name="w1" tie="false" />
+      <element level="2.0" name="w3" tie="false" />
+   </preferences>
+   <preferences name="w0">
+      <element level="1.0" name="m7" tie="false" />
+      <element level="1.0" name="m10" tie="false" />
+      <element level="2.0" name="m5" tie="false" />
+      <element level="3.0" name="m6" tie="false" />
+      <element level="3.0" name="m9" tie="false" />
+      <element level="4.0" name="m11" tie="false" />
+      <element level="4.0" name="m4" tie="false" />
+      <element level="5.0" name="m8" tie="false" />
+   </preferences>
+   <preferences name="w1">
+      <element level="1.0" name="m0" tie="false" />
+      <element level="2.0" name="m3" tie="false" />
+      <element level="3.0" name="m6" tie="false" />
+   </preferences>
+   <preferences name="w2">
+      <element level="1.0" name="m0" tie="false" />
+      <element level="2.0" name="m6" tie="false" />
+      <element level="2.0" name="m3" tie="false" />
+      <element level="3.0" name="m10" tie="false" />
+      <element level="4.0" name="m8" tie="false" />
+      <element level="5.0" name="m9" tie="false" />
+      <element level="6.0" name="m4" tie="false" />
+      <element level="7.0" name="m12" tie="false" />
+      <element level="8.0" name="m7" tie="false" />
+   </preferences>
+   <preferences name="w3">
+      <element level="1.0" name="m0" tie="false" />
+      <element level="2.0" name="m2" tie="false" />
+      <element level="3.0" name="m4" tie="false" />
+      <element level="3.0" name="m10" tie="false" />
+      <element level="3.0" name="m9" tie="false" />
+      <element level="3.0" name="m8" tie="false" />
+      <element level="3.0" name="m6" tie="false" />
+      <element level="4.0" name="m5" tie="false" />
+      <element level="4.0" name="m7" tie="false" />
+      <element level="4.0" name="m11" tie="false" />
+      <element level="5.0" name="m3" tie="false" />
+      <element level="6.0" name="m1" tie="false" />
+      <element level="7.0" name="m12" tie="false" />
+   </preferences>
+</problem>

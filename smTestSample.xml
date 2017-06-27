@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<problem name = "SM" dimension = "2D" description = "Sample of a SM instance">
+
+    <set name = "women" size = "3">
+        w1, w2, w3
+    </set>
+    <set name = "men" size = "3">
+        m1, m2, m3
+    </set>
+
+    <preferences name = "w1">
+        <element name = "m1" level = "1" tie = "false" />
+        <element name = "m2" level = "2" tie = "false" />
+        <element name = "m3" level = "3" tie = "false" />
+    </preferences>
+
+    <preferences name = "w2">
+        <element name = "m3" level = "1" tie = "false" />
+        <element name = "m2" level = "2" tie = "false" />
+        <element name = "m1" level = "3" tie = "false" />
+    </preferences>
+
+    <preferences name = "w3">
+        <element name = "m1" level = "1" tie = "false" />
+        <element name = "m2" level = "2" tie = "false" />
+        <element name = "m3" level = "3" tie = "false" />
+    </preferences>
+
+    <preferences name = "m1">
+        <element name = "w2" level = "1" tie = "false" />
+        <element name = "w3" level = "2" tie = "false" />
+        <element name = "w1" level = "3" tie = "false" />
+    </preferences>
+
+    <preferences name = "m2">
+        <element name = "w2" level = "1" tie = "false" />
+        <element name = "w1" level = "2" tie = "false" />
+        <element name = "w3" level = "3" tie = "false" />
+    </preferences>
+
+    <preferences name = "m3">
+        <element name = "w1" level = "1" tie = "false" />
+        <element name = "w3" level = "2" tie = "false" />
+        <element name = "w2" level = "3" tie = "false" />
+    </preferences>
+
+</problem>

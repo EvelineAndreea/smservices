@@ -25,8 +25,7 @@ public class SmServiceController {
         return new ResponseEntity<>("POST an XML file for solving a specific type of stable matching problem.", HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/algorithm/{param}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE,
-            headers = "Accept=application/xml", produces = MediaType.APPLICATION_XML_VALUE)
+    @RequestMapping(value = "/algorithm/{param}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML_VALUE, headers = "Accept=application/xml", produces = MediaType.APPLICATION_XML_VALUE)
     public ResponseEntity<?> getMatching(@PathVariable("param") String param, @RequestBody String document){
         log.info("New request on /algorithm/" + param);
 

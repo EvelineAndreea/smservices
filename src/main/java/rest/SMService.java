@@ -31,6 +31,9 @@ public class SMService {
         ErrorXml xmlError = null;
         try {
             Matching matching = interpretInstance(problemType, documentContent);
+            if (matching == null)
+                throw new RuntimeException("There has been encountered an error. Read the specifications.");
+
             xmlOk = map(matching, algorithmName, XML_DESCRIPTION ,matching.getSetNames().get(0), matching.getSetNames().get(1));
         } catch (ValidationException e) {
             xmlError = new ErrorXml();
@@ -42,7 +45,7 @@ public class SMService {
     }
 
     private Matching interpretInstance(String problemType, String documentContent){
-        Matching matching = new Matching();
+        Matching matching = null;
         InputSource is = new InputSource();
         is.setCharacterStream(new StringReader(documentContent));
 
@@ -60,7 +63,7 @@ public class SMService {
 
             this.algorithmName = solver.getAlgorithmName();
         } catch (ParserConfigurationException | SAXException | IOException e) {
-            e.printStackTrace();
+            System.out.println("[ERROR] " + e.getMessage());
         }
         return matching;
     }
@@ -93,7 +96,6 @@ public class SMService {
             matches.add(match);
         }
 
-        System.out.println(matches.get(0) .getElements().get(0) + "    -------     " + matches.get(1).getElements().get(0));
         response.setMatches(matches);
 
         for (Element element: matching.getFreeElements()){

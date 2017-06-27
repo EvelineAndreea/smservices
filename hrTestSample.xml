@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<problem name = "HR" dimension = "2D" description = "Sample of a SM instance">
+
+    <set name = "residents" size = "5">
+        r1, r2, r3, r4, r5
+    </set>
+    <set name = "hospitals" size = "2">
+        <element name = "h1" capacity = "3" />
+        <element name = "h2" capacity = "2" />
+    </set>
+
+    <group>
+        <couple> r1, r3 </couple>
+    </group>
+
+    <preferences name = "r2">
+        <element name = "h2" level = "1"/>
+        <element name = "h1" level = "2"/>
+    </preferences>
+
+    <preferences name = "r4">
+        <element name = "h2" level = "1"  />
+        <element name = "h1" level = "2"  />
+    </preferences>
+
+    <preferences name = "r3">
+        <element level = "1" tie = "true"> h1, h2 </element>
+    </preferences>
+
+    <preferences name = "r5">
+        <element name = "h2" level = "1"  />
+        <element name = "h1" level = "2"  />
+    </preferences>
+
+    <preferences name = "h1">
+        <element name = "r1" level = "1"  />
+        <element name = "r2" level = "2"  />
+        <element name = "r4" level = "3"  />
+        <element name = "r3" level = "4"  />
+        <element name = "r5" level = "5"  />
+    </preferences>
+
+    <preferences name = "h2">
+        <element level ="1" tie = "true"> r3, r2 </element>
+        <element name = "r4" level = "2"  />
+        <element name = "r5" level = "3"  />
+        <element name = "r1" level = "4"  />
+    </preferences>
+
+</problem>
