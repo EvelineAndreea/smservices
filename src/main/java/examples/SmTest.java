@@ -2,8 +2,7 @@ package examples;
 
 
 import org.xml.sax.SAXException;
-import sm.solvers.AbstractSolver;
-import sm.solvers.GaleShapleySolver;
+import sm.solvers.KiralySolver;
 import sm.solvers.Solver;
 import sm.utils.model.Problem;
 import sm.utils.parsers.SMParser;
@@ -16,12 +15,12 @@ public class SmTest {
     public static void main(String[] args)  {
         SMParser parser = null;
         try {
-            parser = new SMParser("D:\\Facultate\\Sem 5\\LICENTA\\Architecture Planning\\kiralySample.xml");
+            parser = new SMParser("kiralySample.xml");
             parser.read();
 
             Problem problem = parser.getProblem();
 
-            Solver solver = new GaleShapleySolver(problem);
+            Solver solver = new KiralySolver(problem);
             System.out.println(problem.toString());
 
             System.out.println(solver.solve().toString());

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<problem description="Sample of Hr instance" name="SM">
+    <set name="men" size="2">m1, m2</set>
+    <set name="women" size="2">w1, w2</set>
+
+    <preferences name="m1">
+        <element level="1" name="w1"/>
+    </preferences>
+
+    <preferences name="m2">
+        <element level="1" name="w1" tie="false"/>
+        <element level="2" name="w2" tie="false"/>
+    </preferences>
+
+    <preferences name="w1">
+        <element level="1" name="m1"/>
+        <element level="1" name="m2" />
+    </preferences>
+
+    <preferences name="w2">
+        <element level="1" name="m2"/>
+    </preferences>
+</problem>

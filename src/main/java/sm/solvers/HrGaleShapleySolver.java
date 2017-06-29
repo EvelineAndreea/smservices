@@ -107,7 +107,7 @@ public class HrGaleShapleySolver extends AbstractSolver {
                     /* when the hospital is not available and the resident is single */
                     Element lowestMatch = matching.getLowestMatch(hospital);
 
-                    if (hospital.getIndex(lowestMatch.elemId()).level() < hospital.getIndex(resident.elemId()).level())
+                    if (hospital.getIndex(lowestMatch.elemId()).level() <= hospital.getIndex(resident.elemId()).level())
                         continue;
 
                     matching.addFreeElement(lowestMatch);

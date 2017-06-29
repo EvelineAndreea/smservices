@@ -10,6 +10,7 @@ import sm.solvers.SolverFactory;
 import sm.utils.model.Element;
 import sm.utils.model.Pair;
 import sm.utils.model.Problem;
+import sm.utils.model.SaPair;
 import sm.utils.model.matchings.Matching;
 import sm.utils.parsers.SMParser;
 
@@ -21,6 +22,7 @@ import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import static sm.utils.Constants.SA_ALGORITHM_NAME;
 import static sm.utils.Constants.XML_DESCRIPTION;
 
 public class SMService {
@@ -93,6 +95,9 @@ public class SMService {
             elems.add(elem1);
 
             match.setElements(elems);
+
+            if (algorithm.equalsIgnoreCase(SA_ALGORITHM_NAME))
+                match.setUnitsAllocated(((SaPair)pair).getUnitsAllocated());
             matches.add(match);
         }
 
